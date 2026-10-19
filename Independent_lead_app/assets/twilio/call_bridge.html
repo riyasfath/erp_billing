@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<script src="twilio.min.js"></script>
+<script>
+  let device = null;
+  let activeCall = null;
+
+  function post(type, extra) {
+    var payload = Object.assign({ type: type }, extra || {});
+    if (window.TwilioBridge) {
+      window.TwilioBridge.postMessage(JSON.stringify(payload));
+    }
+  }
+
+  window.initDevice = function (token) {
+    try {
+      if (device) {
+        device.destroy();
+        device = null;
+      }
+      device = new Twilio.Device(token, { logLevel: 'warn' });
+
+      device.on('registered', function () { post('registered'); });
+      device.on('unregistered', function () { post('unregistered'); });
+      device.on('error', function (err) {
+        post('error', { message: String(err && err.message ? err.message : err) });
+      });
+
+      device.register();
+    } catch (e) {
+      post('error', { message: 'initDevice failed: ' + e });
+    }
+  };
+
+  window.connectCall = function (phoneNumber) {
+    if (!device) {
+      post('error', { message: 'Device not initialized' });
+      return;
+    }
+    device.connect({ params: { To: phoneNumber } }).then(function (call) {
+      activeCall = call;
+      post('connecting');
+      call.on('ringing', function () { post('ringing'); });
+      call.on('accept', function () { post('accepted'); });
+      call.on('disconnect', function () { post('disconnect'); activeCall = null; });
+      call.on('reject', function () { post('reject'); activeCall = null; });
+      call.on('cancel', function () { post('cancel'); activeCall = null; });
+      call.on('error', function (err) {
+        post('error', { message: String(err && err.message ? err.message : err) });
+      });
+    }).catch(function (e) {
+      post('error', { message: 'connect failed: ' + e });
+    });
+  };
+
+  window.hangUp = function () {
+    if (activeCall) activeCall.disconnect();
+  };
+
+  window.toggleMute = function (mute) {
+    if (activeCall) activeCall.mute(mute);
+  };
+</script>
+</body>
+</html>

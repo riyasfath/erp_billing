@@ -1,0 +1,53 @@
+PODS:
+  - file_saver (0.0.1):
+    - FlutterMacOS
+  - flutter_local_notifications (0.0.1):
+    - FlutterMacOS
+  - flutter_webrtc (1.4.0):
+    - FlutterMacOS
+    - WebRTC-SDK (= 144.7559.09)
+  - FlutterMacOS (1.0.0)
+  - open_file_mac (0.0.1):
+    - FlutterMacOS
+  - printing (1.0.0):
+    - FlutterMacOS
+  - WebRTC-SDK (144.7559.09)
+
+DEPENDENCIES:
+  - file_saver (from `Flutter/ephemeral/.symlinks/plugins/file_saver/macos`)
+  - flutter_local_notifications (from `Flutter/ephemeral/.symlinks/plugins/flutter_local_notifications/macos`)
+  - flutter_webrtc (from `Flutter/ephemeral/.symlinks/plugins/flutter_webrtc/macos`)
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - open_file_mac (from `Flutter/ephemeral/.symlinks/plugins/open_file_mac/macos`)
+  - printing (from `Flutter/ephemeral/.symlinks/plugins/printing/macos`)
+
+SPEC REPOS:
+  trunk:
+    - WebRTC-SDK
+
+EXTERNAL SOURCES:
+  file_saver:
+    :path: Flutter/ephemeral/.symlinks/plugins/file_saver/macos
+  flutter_local_notifications:
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_local_notifications/macos
+  flutter_webrtc:
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_webrtc/macos
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  open_file_mac:
+    :path: Flutter/ephemeral/.symlinks/plugins/open_file_mac/macos
+  printing:
+    :path: Flutter/ephemeral/.symlinks/plugins/printing/macos
+
+SPEC CHECKSUMS:
+  file_saver: e35bd97de451dde55ff8c38862ed7ad0f3418d0f
+  flutter_local_notifications: 7e5a17a1dbc00d83dc10d43c2c4c05f2ceed233c
+  flutter_webrtc: fec3dc9284a1f6d21ec2caa91c90bb4c1824eb04
+  FlutterMacOS: d0db08ddef1a9af05a5ec4b724367152bb0500b1
+  open_file_mac: 01874b6d6a2c1485ac9b126d7105b99102dea2cf
+  printing: c4cf83c78fd684f9bc318e6aadc18972aa48f617
+  WebRTC-SDK: e6006119cd730d6315d875e4a421b6cc8bb88833
+
+PODFILE CHECKSUM: 9ebaf0ce3d369aaa26a9ea0e159195ed94724cf3
+
+COCOAPODS: 1.16.2

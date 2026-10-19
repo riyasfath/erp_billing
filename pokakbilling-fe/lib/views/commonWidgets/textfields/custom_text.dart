@@ -1,0 +1,34 @@
+import 'package:flutter/material.dart';
+import 'package:pokakbilling/core/themes/app_colors.dart';
+
+class CustomText extends StatelessWidget {
+  final String text;
+  final bool isMandatory;
+  const CustomText({super.key, required this.text, required this.isMandatory});
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: text,
+            style: const TextStyle(
+              color: AppColors.violetblue,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          if (isMandatory)
+            const TextSpan(
+              text: ' *',
+              style: TextStyle(
+                color: AppColors.red,
+                fontSize: 16,
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
